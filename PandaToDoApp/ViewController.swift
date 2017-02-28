@@ -21,6 +21,10 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
+    }
    
     //MARK: TableView Data Source 
     
@@ -67,6 +71,22 @@ class ViewController: UITableViewController {
         
         present(alert, animated: true)
     }
+    
+    
+    func fetchData() {
+        let managedContext = store.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+        do {
+            self.todos = try managedContext.fetch(fetchRequest)
+            self.tableView.reloadData()
+            
+        } catch {
+            print("Error fetching data")
+            print(error.localizedDescription)
+        }
+    }
+    
+    
     
     
     func saveToDo(titleString: String) {
