@@ -18,7 +18,7 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.insertYellowGradient()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell")
-        cell?.backgroundColor = UIColor.yellow
+        cell?.backgroundColor = UIColor.clear
         if let unwrappedTitle = self.todos[indexPath.row].title {
             cell?.textLabel?.text = todos[indexPath.row].title
         }
@@ -108,7 +108,27 @@ class ViewController: UITableViewController {
 
 
     
+}
+
+
+extension UIView {
+    func insertYellowGradient() {
+        let firstColor = UIColor(red:1.00, green:0.88, blue:0.33, alpha:1.0).cgColor
+        let secondColor = UIColor(red:1.00, green:0.74, blue:0.41, alpha:1.0).cgColor
+        let thirdColor = UIColor(red:1.00, green:0.58, blue:0.38, alpha:1.0).cgColor
+        let gradient: CAGradientLayer
+        gradient = CAGradientLayer()
+        gradient.colors = [firstColor, secondColor, thirdColor]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = self.frame
+        self.layer.insertSublayer(gradient, at: 0)
+        
+
+        
+    }
     
     
 }
+
 
