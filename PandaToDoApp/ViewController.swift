@@ -38,12 +38,28 @@ class ViewController: UITableViewController {
         cell?.textLabel?.textColor = UIColor.white
         if let unwrappedTitle = self.todos[indexPath.row].title {
             cell?.textLabel?.text = todos[indexPath.row].title
+            cell?.textLabel?.font = UIFont(name: "Avenir", size: 22.0)
         }
     
         return cell!
     }
 
+   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            // remove the item from the data model
+            self.todos.remove(at: indexPath.row)
+            
+            // delete the table view row
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            // Not used in our example, but if you were adding a new row, this is where you would do it.
+        }
+    }
     
+
     
     
     @IBAction func addBtnPressed(_ sender: Any) {
