@@ -9,21 +9,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--To Do-->
         <scene sceneID="rPd-NZ-eRz">
             <objects>
                 <tableViewController id="WRX-ZF-mny" customClass="ViewController" customModule="PandaToDoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nJk-mJ-zfW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="28" sectionFooterHeight="28" id="nJk-mJ-zfW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toDoCell" id="Y7T-a4-Mn5">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="20" reuseIdentifier="toDoCell" rowHeight="117" id="Y7T-a4-Mn5">
+                                <rect key="frame" x="0.0" y="28" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y7T-a4-Mn5" id="1dX-Ls-YYi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="Y7T-a4-Mn5" id="1dX-Ls-YYi">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="tintColor" red="1" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -32,7 +33,7 @@
                             <outlet property="delegate" destination="WRX-ZF-mny" id="s6f-Lo-FBi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Kll-j6-3DB">
+                    <navigationItem key="navigationItem" title="To Do" id="Kll-j6-3DB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fzZ-ns-006">
                             <color key="tintColor" red="1" green="0.73725490199999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
