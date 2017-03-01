@@ -18,12 +18,19 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.insertYellowGradient()
+        //self.tableView.insertYellowGradient()
+        
+        tableView.reloadData()
+        
+  
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
+        self.tableView.insertYellowGradient()
+
     }
    
     //MARK: TableView Data Source 
@@ -34,7 +41,8 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell")
-        cell?.backgroundColor = UIColor.clear
+        cell?.backgroundColor = UIColor(red:1.00, green:0.74, blue:0.41, alpha:1.0)
+
         cell?.textLabel?.textColor = UIColor.white
         if let unwrappedTitle = self.todos[indexPath.row].title {
             cell?.textLabel?.text = todos[indexPath.row].title
@@ -111,7 +119,7 @@ class ViewController: UITableViewController {
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedContext)
         
         if let unwrappedEntity = entity {
-            var todo = NSManagedObject(entity: unwrappedEntity, insertInto: managedContext) as! Task
+            let todo = NSManagedObject(entity: unwrappedEntity, insertInto: managedContext) as! Task
             todo.title = titleString
             do {
                 try managedContext.save()
@@ -122,30 +130,46 @@ class ViewController: UITableViewController {
             }
         }
     }
-
-
+    
     
 }
+
+// MARK: Gradients
+
+
+extension CALayer {
+    public static func makeGradient(firstColor: UIColor, secondColor: UIColor, thirdColor: UIColor) -> CAGradientLayer {
+        let backgroundGradient = CAGradientLayer()
+        let firstColor = UIColor(red:1.00, green:0.88, blue:0.33, alpha:1.0).cgColor
+        let secondColor = UIColor(red:1.00, green:0.74, blue:0.41, alpha:1.0).cgColor
+        let thirdColor = UIColor(red:0.95, green:0.29, blue:0.52, alpha:1.0).cgColor
+        backgroundGradient.colors = [firstColor, secondColor, thirdColor]
+        backgroundGradient.locations = [0, 1]
+        backgroundGradient.startPoint = CGPoint(x: 0, y: 0)
+        backgroundGradient.endPoint = CGPoint(x: 0, y: 1)
+        
+        return backgroundGradient
+    }
+}
+
 
 
 extension UIView {
     func insertYellowGradient() {
         let firstColor = UIColor(red:1.00, green:0.88, blue:0.33, alpha:1.0).cgColor
         let secondColor = UIColor(red:1.00, green:0.74, blue:0.41, alpha:1.0).cgColor
-       let thirdColor = UIColor(red:0.95, green:0.29, blue:0.52, alpha:1.0).cgColor
+        let thirdColor = UIColor(red:0.95, green:0.29, blue:0.52, alpha:1.0).cgColor
         let gradient: CAGradientLayer
         gradient = CAGradientLayer()
         gradient.colors = [firstColor, secondColor, thirdColor]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradient.frame = self.frame
+        gradient.frame = UIScreen.main.bounds
         self.layer.insertSublayer(gradient, at: 0)
-        
 
-        
     }
-    
-    
 }
+
+
 
 
